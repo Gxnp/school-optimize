@@ -53,7 +53,7 @@ function MainMenu() {
           </Link>
         </section>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mx-auto max-w-7xl">
           {links.map((link, index) => (
             <a
               key={index}
@@ -64,11 +64,11 @@ function MainMenu() {
               <Card className="hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardHeader>
                   {link.icon}
-                  <CardTitle className="font-semibold text-gray-800">
+                  <CardTitle >
                     {link.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="font-semibold text-gray-900">
+                <CardContent>
                   <p>{link.desc}</p>
                 </CardContent>
               </Card>

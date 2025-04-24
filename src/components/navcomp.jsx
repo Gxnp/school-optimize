@@ -43,8 +43,8 @@ const Navcomp = () => {
           ))}
 
           <Link
-            href="/"
-            className="rounded-2xl text-base font-semibold p-2 bg-blue-600 hover:bg-blue-700 transition-all duration-200"
+            href="/applypage"
+            className="text-white rounded-2xl text-base font-semibold p-2 bg-blue-600 hover:bg-blue-700 transition-all duration-200"
           >
             {" "}
             สมัครเลย !{" "}
