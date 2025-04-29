@@ -14,7 +14,6 @@ export default function ApplyForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter(); // ใช้ router
 
-
   const schema = step === 1 ? stepOneSchema : stepTwoSchema;
 
   // 💡 สร้าง useForm ใหม่ทุกครั้งเมื่อ step เปลี่ยน โดยใช้ key
@@ -25,7 +24,7 @@ export default function ApplyForm() {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-  
+
     const orderedData = {
       title: data.title,
       name: data.fullName, // ✅ เปลี่ยนชื่อ key ให้ตรงกับ schema
@@ -42,22 +41,22 @@ export default function ApplyForm() {
       gradeApplyingFor: data.desiredProgram,
       profilePicture: "", // ใส่ default ว่างไว้ก่อนได้ ถ้ายังไม่ได้อัปโหลด
     };
-  
+
     try {
       console.log("ข้อมูลจาก form ทั้งหมด:", methods.getValues());
       console.log("ข้อมูลที่จัดเรียงแล้ว:", orderedData);
-  
+
       await new Promise((res) => setTimeout(res, 2000)); // ดีเลย์ที่นี่ถ้าอยากให้เห็นก่อนส่งจริง
       console.log("ข้อมูลที่ส่ง:", orderedData);
-  
+
       const response = await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderedData),
       });
-  
+
       const result = await response.json();
-  
+
       if (response.ok) {
         toast.success("ส่งใบสมัครสำเร็จ!");
         // เพิ่มดีเลย์ 1 วินาที แล้ว redirect ไปหน้า /
@@ -76,8 +75,6 @@ export default function ApplyForm() {
       setIsSubmitting(false);
     }
   };
-  
-  
 
   const handleNext = async () => {
     const isValid = await methods.trigger(); // ✅ ตรวจสอบฟอร์มทั้งหมดก่อนเปลี่ยน step
@@ -93,49 +90,51 @@ export default function ApplyForm() {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        key={step} // ✅ รีโหลดฟอร์มเมื่อเปลี่ยน step เพื่อให้ resolver ทำงานใหม่
-        onSubmit={methods.handleSubmit(onSubmit)}
-        className="max-w-xl mx-auto p-4 space-y-6"
-      >
-        {step === 1 && <StepOne />}
-        {step === 2 && <StepTwo />}
+    <div className="bg-gradient-to-b from-blue-50 to-white ">
+      <FormProvider {...methods}>
+        <form
+          key={step} // ✅ รีโหลดฟอร์มเมื่อเปลี่ยน step เพื่อให้ resolver ทำงานใหม่
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="max-w-xl mx-auto p-4 space-y-6 "
+        >
+          {step === 1 && <StepOne />}
+          {step === 2 && <StepTwo />}
 
-        <div className="flex justify-between">
-          <button
-            type="button"
-            onClick={handleBack}
-            className="bg-gray-300 text-black px-6 py-2 rounded disabled:opacity-60"
-            disabled={step === 1}
-          >
-            ย้อนกลับ
-          </button>
-
-          {step === 1 ? (
+          <div className="flex justify-between">
             <button
               type="button"
-              onClick={handleNext}
-              className={`bg-blue-500 text-white px-6 py-2 rounded ${
-                isSubmitting ? "opacity-60 cursor-not-allowed" : ""
-              }`}
-              disabled={isSubmitting}
+              onClick={handleBack}
+              className="bg-gray-300 text-black px-6 py-2 rounded disabled:opacity-60"
+              disabled={step === 1}
             >
-              ถัดไป
+              ย้อนกลับ
             </button>
-          ) : (
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-6 py-2 rounded disabled:opacity-60"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "กำลังส่ง..." : "ส่งใบสมัคร"}
-            </button>
-          )}
-        </div>
 
-        <Toaster position="top-center" />
-      </form>
-    </FormProvider>
+            {step === 1 ? (
+              <button
+                type="button"
+                onClick={handleNext}
+                className={`bg-blue-500 text-white px-6 py-2 rounded ${
+                  isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+                }`}
+                disabled={isSubmitting}
+              >
+                ถัดไป
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-6 py-2 rounded disabled:opacity-60"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "กำลังส่ง..." : "ส่งใบสมัคร"}
+              </button>
+            )}
+          </div>
+
+          <Toaster position="top-center" />
+        </form>
+      </FormProvider>
+    </div>
   );
 }
