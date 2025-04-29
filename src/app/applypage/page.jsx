@@ -5,14 +5,14 @@ import { BookOpen, GraduationCap } from "lucide-react";
 const ApplyPage = () => {
   return (
     <div>
-      <div className="bg-gradient-to-b from-blue-50 to-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="bg-gradient-to-b from-blue-50 to-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* วงกลมตกแต่งพื้นหลัง */}
         <div className="absolute inset-0 opacity-40 pointer-events-none">
           <div className="absolute top-0 right-1/3 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
           <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl font-extrabold text-center mb-12 text-gray-900 leading-tight tracking-tight">
             เลือกประเภทการสมัครของคุณ
           </h1>
