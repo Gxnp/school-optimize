@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
 export async function PUT(req) {
     try {
       const { formData } = await req.json();
@@ -54,7 +55,7 @@ export async function PUT(req) {
       console.error(error);
       return NextResponse.json(
         { success: false, message: "เกิดข้อผิดพลาดที่เซิร์ฟเวอร์" },
-        { status: 500 }
+        { status: 404 }
       );
     }
   }
