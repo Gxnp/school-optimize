@@ -69,7 +69,9 @@ export default function SuccessPage() {
 
   useEffect(() => {
     const storedPhone = localStorage.getItem("userPhoneNumber");
-    if (storedPhone) {
+    if (!storedPhone) {
+      router.push("/");
+    }else{
       setPhone(storedPhone);
     }
   }, []);

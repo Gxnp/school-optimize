@@ -40,7 +40,7 @@ const ApplyPage = () => {
               </div>
 
               <Link
-                href="/"
+                href="/applyform"
                 className="text-xl py-1.5 rounded-xl flex justify-center items-center mt-auto transition ease-in-out bg-pink-500 hover:-translate-y-1 hover:scale-90 hover:bg-pink-600 duration-300 text-white"
               >
                 มัธยมศึกษาตอนต้น

@@ -11,7 +11,7 @@ const Navcomp = () => {
   const isActive = (path) => pathname === path;
 
   return (
-    <div className="sticky top-0 bg-white z-[999]">
+    <div className="sticky top-0 bg-white ">
       <div className="mx-auto flex justify-between items-center px-2.5 max-w-full">
         <Link href="/">
           <img
@@ -78,7 +78,7 @@ const Navcomp = () => {
       {/* lg:hidden flex flex-col gap-4 p-4 bg-white shadow-lg transform transition-all duration-300 ease-in-out */}
 
       <div
-        className={`lg:hidden fixed top-10 right-10 max-w-7xl bg-white/20  backdrop-blur-sm shadow-lg transform transition-all duration-300 ease-in-out rounded-xl  ${
+        className={`flex-none lg:hidden fixed top-10 right-10 max-w-7xl bg-white/20  backdrop-blur-sm shadow-lg transform transition-all duration-300 ease-in-out rounded-xl  ${
           isOpen ? "opacity-100 z-[49]" : "opacity-0 z-[40]"
         }`}
         style={{ transformOrigin: "top" }}
