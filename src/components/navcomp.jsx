@@ -11,7 +11,7 @@ const Navcomp = () => {
   const isActive = (path) => pathname === path;
 
   return (
-    <div className="sticky top-0 bg-white">
+    <div className="sticky top-0 bg-white z-[999]">
       <div className="mx-auto flex justify-between items-center px-2.5 max-w-full">
         <Link href="/">
           <img
