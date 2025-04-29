@@ -42,7 +42,7 @@ function MainMenu() {
           </p>
 
           <Link
-            href="/apply"
+            href="/applypage"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg font-medium"
           >
             สมัครเลย !
